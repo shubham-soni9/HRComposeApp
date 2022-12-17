@@ -40,7 +40,6 @@ fun HomeScreen(
     homeViewModel: HomeViewModel,
     openDrawer: () -> Unit
 ) {
-    homeViewModel.getAllEmployees()
     val lazyListState = rememberLazyListState()
     Scaffold(
         topBar = {

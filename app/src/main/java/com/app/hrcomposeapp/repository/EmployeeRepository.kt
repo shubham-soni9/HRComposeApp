@@ -1,5 +1,6 @@
 package com.app.hrcomposeapp.repository
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.app.hrcomposeapp.database.Employee
 import com.app.hrcomposeapp.database.EmployeeDao
@@ -9,7 +10,6 @@ import kotlinx.coroutines.launch
 
 class EmployeeRepository(private val employeeDao: EmployeeDao) {
 
-    val allEmployees = MutableLiveData<List<Employee>>()
     val foundEmployee = MutableLiveData<Employee>()
     private val coroutineScope = CoroutineScope(Dispatchers.Main)
 
@@ -25,10 +25,8 @@ class EmployeeRepository(private val employeeDao: EmployeeDao) {
         }
     }
 
-    fun getAllEmployees() {
-        coroutineScope.launch(Dispatchers.IO) {
-            allEmployees.postValue(employeeDao.getAllEmployees())
-        }
+    fun getAllEmployees(): LiveData<List<Employee>> {
+        return employeeDao.getAllEmployees()
     }
 
     fun deleteEmployee(employee: Employee) {

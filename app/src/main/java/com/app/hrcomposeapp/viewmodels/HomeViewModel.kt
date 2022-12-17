@@ -12,18 +12,12 @@ import javax.inject.Inject
 class HomeViewModel @Inject constructor(private val employeeRepository: EmployeeRepository) :
     ViewModel() {
 
-    fun getAllEmployees(){
-        employeeRepository.getAllEmployees()
-    }
-
     fun addEmployee(employee: Employee) {
         employeeRepository.addEmployee(employee)
-        getAllEmployees()
     }
 
     fun updateEmployeeDetails(employee: Employee) {
         employeeRepository.updateEmployeeDetails(employee)
-        getAllEmployees()
     }
 
     fun findEmployeeById(empId: String) {
@@ -32,10 +26,9 @@ class HomeViewModel @Inject constructor(private val employeeRepository: Employee
 
     fun deleteEmployee(employee: Employee) {
         employeeRepository.deleteEmployee(employee)
-        getAllEmployees()
     }
 
-    val employeeList: LiveData<List<Employee>> = employeeRepository.allEmployees
+    val employeeList: LiveData<List<Employee>> = employeeRepository.getAllEmployees()
 
     val foundEmployee: LiveData<Employee> = employeeRepository.foundEmployee
 

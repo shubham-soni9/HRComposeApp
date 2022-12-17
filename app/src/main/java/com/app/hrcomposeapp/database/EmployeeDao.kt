@@ -1,5 +1,6 @@
 package com.app.hrcomposeapp.database
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 
 @Dao
@@ -12,7 +13,7 @@ interface EmployeeDao {
     fun findEmployeeById(empId: String): Employee
 
     @Query("SELECT * FROM employees")
-    fun getAllEmployees(): List<Employee>
+    fun getAllEmployees(): LiveData<List<Employee>>
 
     @Update
     suspend fun updateEmployeeDetails(employee: Employee)

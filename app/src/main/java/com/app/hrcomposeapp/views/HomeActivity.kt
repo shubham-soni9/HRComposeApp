@@ -4,12 +4,13 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import com.app.hrcomposeapp.ui.theme.HRComposeAppTheme
 import com.app.hrcomposeapp.viewmodels.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HomeActivity : ComponentActivity() {
+class HomeActivity : AppCompatActivity() {
 
     private val homeViewModel: HomeViewModel by viewModels()
 
